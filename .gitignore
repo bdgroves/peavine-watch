@@ -1,0 +1,17 @@
+# pixi
+.pixi/
+*.lock.bak
+
+# analysis outputs - regenerate with `pixi run severity`
+out/*.tif
+out/*.png
+cache/
+
+# python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# os
+Thumbs.db
+.DS_Store

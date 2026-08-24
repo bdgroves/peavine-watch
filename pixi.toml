@@ -1,0 +1,23 @@
+[workspace]
+name = "peavine-watch"
+version = "1.0.0"
+description = "Sentinel-2 burn severity and snow tracking for the Hawk Fire / GC1CG0A site, Peavine Mtn NV"
+authors = ["Brooks Groves <brooksg@zillowgroup.com>"]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tasks]
+severity = "python burn_severity.py"
+snow     = "python snow_watch.py"
+baer     = "python baer_check.py"
+scenes   = "python peavine.py"
+
+[dependencies]
+python        = ">=3.11"
+pystac-client = "*"
+rasterio      = "*"
+rioxarray     = "*"
+xarray        = "*"
+numpy         = "*"
+matplotlib    = "*"
+requests      = "*"
