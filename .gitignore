@@ -4,6 +4,7 @@
 
 # analysis outputs - regenerate with `pixi run severity`
 out/*.tif
+out/*.tif.aux.xml
 out/*.png
 cache/
 
