@@ -84,16 +84,36 @@
 
   <div class="status" id="status"><div><span class="n">—</span><span class="k">loading</span></div></div>
 
-  <h2>Why this grove</h2>
-  <p>The site sits almost exactly on a drainage line — 214 cells of flow
-  accumulation, 31 metres from a mapped channel. A parking area 500 metres away
-  scores 1: flat, dry ridge. That is not a coincidence. Water finds this exact
-  spot on the mountain, and has for a very long time. The spring is why the grove
-  is there, and the grove is why the sheepherders camped there.</p>
-  <p>Aspen regenerates aggressively from root suckers after fire, so the trees
-  will very likely come back. The carvings will not. They live in bark and
-  cambium — thin living tissue, which is exactly what makes it carvable and
-  exactly what gives it no defence against heat.</p>
+  <h2>Why there was anything there to burn</h2>
+  <p>A watershed run over USGS elevation puts the cache almost exactly on a
+  drainage line: <strong>214 cells</strong> of flow accumulation, 31 metres from a
+  mapped channel. A parking area 500 metres away scores <strong>1</strong> — flat,
+  dry ridge. That contrast is the whole geography of the site in two numbers.
+  Water finds this exact spot on the mountain, and has for a very long time.</p>
+  <p>The spring is why the grove is there. The grove is why the sheepherders
+  camped there. The camping is why the carvings are there. Hold on to that
+  chain — it comes back further down, and it isn&rsquo;t kind.</p>
+
+  <h2>Ninety-two minutes</h2>
+  <p>VIIRS is a thermal sensor on two polar-orbiting satellites. It doesn&rsquo;t
+  usually let you watch a fire arrive at a specific coordinate — but Hawk moved
+  fast enough, and the passes lined up well enough, that here it basically does.</p>
+  <div class="card">
+    <h3>Fire arrival at the cache &middot; 22 August 2026</h3>
+    <table>
+      <tr><th>Time (PDT)</th><th>Distance</th><th>What VIIRS saw</th></tr>
+      <tr><td>11:23 AM</td><td>&mdash;</td><td style="text-align:left">Ignition</td></tr>
+      <tr><td>12:55 PM</td><td>315 m</td><td style="text-align:left">First detection, 92 min after ignition</td></tr>
+      <tr><td>1:40 PM</td><td>222 m</td><td style="text-align:left">High confidence, 216 MW</td></tr>
+      <tr><td><strong>2:16 PM</strong></td><td><strong>79 m</strong></td><td style="text-align:left">High confidence, 142.7 MW</td></tr>
+      <tr><td>2:36 PM</td><td>282 m</td><td style="text-align:left">230 MW</td></tr>
+    </table>
+  </div>
+  <p>Ninety minutes to close 236 metres. Brightness temperature
+  <strong>saturated the sensor&rsquo;s ceiling at 367 K</strong> on most of these —
+  it could not register anything hotter. At the cache pixel, NDVI fell from
+  <strong>0.776 to 0.217</strong>: closed healthy canopy to bare soil. This was
+  not a surface fire that ran underneath and scorched some trunks. The crown went.</p>
 
   <h2>Terrain, or just more fuel?</h2>
   <p>Same fire, same afternoon, 500 metres apart: the grove in its drainage burned
@@ -117,10 +137,12 @@
   residual can&rsquo;t be fuel load — fuel load is what was controlled for. Both
   effects are real and they compound: the grove was the heaviest fuel on the
   hillside, standing in the feature that concentrated the fire into it.</p>
-  <p>Which closes an unpleasant loop. Water collects in that drainage. Water grew
-  the aspens. The aspens were the heaviest fuel on the hill, standing in the
-  feature that funnelled the fire to them. <strong>Every reason the grove existed
-  is a reason it burned.</strong></p>
+  <blockquote style="border-left:3px solid var(--rust);padding:.2rem 0 .2rem 1.2rem;
+    margin:1.4rem 0;font-style:italic;color:var(--char)">
+    Water collects in that drainage. Water grew the aspens. The aspens were the
+    heaviest fuel on the hill, standing in the feature that funnelled the fire to
+    them. <strong>Every reason the grove existed is a reason it burned.</strong>
+  </blockquote>
 
   <figure>
     <img src="img/map_dnbr_site.png" alt="Burn severity around the cache site with VIIRS thermal detections approaching up the drainage.">
@@ -178,6 +200,20 @@
   about smoke.</p>
   <div id="table" class="loading">loading…</div>
 
+  <h2>What this can never tell us</h2>
+  <p>The cache is a steel ammo can — the best-case container for surviving a fast
+  grass and brush fire. It is scorched almost certainly, and plausibly still there.
+  The arborglyphs are a different story: they live in bark and cambium, thin living
+  tissue, which is exactly what makes it carvable and exactly what gives it no
+  defence against heat.</p>
+  <p><strong>No satellite index can see bark.</strong> NDVI and NBR measure canopy
+  and soil from 786 km up; the carvings are millimetres deep. That question needs
+  someone standing in the grove — and UNR&rsquo;s Center for Basque Studies, who
+  catalogue Peavine&rsquo;s arborglyphs, may hold documentation of what was there
+  before August.</p>
+  <p>An ammo can is replaceable. A hundred years of a vanishing culture&rsquo;s
+  handwriting on a mountainside is not.</p>
+
   <div class="note" id="limits">
     <strong>Limits, stated plainly.</strong> dNBR and RdNBR measure surface and
     canopy change from above. Neither is soil burn severity — the number that
@@ -191,6 +227,8 @@
     Sentinel-2 L2A via AWS Earth Search (no auth) &middot; VIIRS and fire perimeters via NIFC WFIGS
     &middot; Elevation USGS 3DEP &middot; Hydrology GRASS r.watershed<br>
     Code MIT. Underlying data public domain (NASA, USGS, ESA/Copernicus, NIFC).<br>
+    <em>Whether the carvings survived is worth knowing, and — as far as I can tell —
+    nobody else was going to check.</em><br><br>
     Built by <a href="https://brooksgroves.com">Brooks Groves</a> &middot;
     <a href="https://github.com/bdgroves/peavine-watch">github.com/bdgroves/peavine-watch</a>
   </footer>
