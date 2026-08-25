@@ -11,6 +11,7 @@ severity = "python burn_severity.py"
 snow     = "python snow_watch.py"
 baer     = "python baer_check.py"
 scenes   = "python peavine.py"
+watch    = "python monitor.py"
 
 [dependencies]
 python        = ">=3.11"

@@ -169,6 +169,26 @@ def ndsi(item, masked=True):
     return r
 
 
+def ndvi(item, masked=True):
+    """Normalised difference vegetation index: (nir - red) / (nir + red).
+
+    NBR answers "how much did the fire take". NDVI answers "how much has come
+    back". They are not interchangeable: NBR uses SWIR2, which stays sensitive
+    to char and bare soil long after green-up begins, while NDVI responds to
+    chlorophyll directly. For tracking aspen resprouting - which is the whole
+    reason this repo keeps watching after the burn number is settled - NDVI is
+    the one that moves first.
+
+    Aspen regenerates from root suckers, so the recovery signal to expect is a
+    rise in NDVI at the grove over the following growing seasons, from bare-soil
+    values (~0.1) back toward the dense-canopy values the pre-fire scenes show.
+    A grove that does NOT climb is the finding worth having.
+    """
+    r = ratio(band(item, "nir"), band(item, "red"))
+    if masked:
+        r = r.where(cloud_mask(item, r))
+    return r
+
 def rdnbr(dnbr_da, nbr_pre_da):
     """Relativized dNBR (Miller & Thode 2007): dNBR_scaled / sqrt(|NBR_pre_scaled| / 1000).
 

@@ -1,0 +1,45 @@
+name: Watch Peavine
+
+# Sentinel-2 revisits every ~5 days, but pass timing drifts and scenes appear
+# on AWS a few hours after acquisition. Polling daily is cheap and means a new
+# scene is picked up within a day of becoming available rather than waiting on
+# a fixed schedule that may miss it.
+on:
+  schedule:
+    - cron: '0 11 * * *'    # 11:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # pip rather than pixi: pixi.lock is pinned to win-64 and regenerating it
+      # for linux-64 just to run CI would mean maintaining two lockfiles for the
+      # same four libraries. Versions are unpinned here on purpose - if an
+      # upstream break happens we want to see it in CI, not have it hidden.
+      - name: Install
+        run: pip install --quiet pystac-client rioxarray rasterio xarray numpy
+
+      - name: Check for new passes
+        run: python monitor.py
+
+      - name: Commit new observations
+        run: |
+          git config user.name  "github-actions"
+          git config user.email "actions@github.com"
+          git add out/timeseries.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No new satellite data"
+          else
+            git commit -m "data: peavine pass $(date -u +%Y-%m-%d)"
+            git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)" && git push
+          fi
