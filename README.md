@@ -18,6 +18,17 @@ compute.
 **Live dashboard → [bdgroves.github.io/peavine-watch](https://bdgroves.github.io/peavine-watch/)**
 — updated every time Sentinel-2 passes over.
 
+| | |
+|---|---|
+| 📊 **Live dashboard** | [bdgroves.github.io/peavine-watch](https://bdgroves.github.io/peavine-watch/) |
+| 📝 **The write-up** | [Watching a Mountain Burn](https://brooksgroves.com/blog/watching-a-mountain-burn.html) — what the analysis found, and where I got it wrong first |
+| 🚵 **The same mountain, 30 years earlier** | [The Mountain You See Every Day](https://memoir.brooksgroves.com/paragon-peavine.html) — riding Peavine out of downtown Reno in the 1990s, and the grove before any of this |
+| 📍 **The cache** | [GC1CG0A · Basque Sheepherder: The High Camp](https://www.geocaching.com/geocache/GC1CG0A_basque-sheepherder-the-high-camp) |
+
+> The Hawk Fire destroyed 32 homes, damaged six more and injured seven people, three of
+> them responders. At its peak 42,000 residents were under mandatory evacuation. This
+> repository is about one hillside within that fire. It is not the important part of it.
+
 ---
 
 ## Why there was anything there to burn
@@ -283,3 +294,10 @@ MIT for the code. Underlying data is public domain (NASA, USGS, ESA/Copernicus, 
 
 *Whether the carvings survived is worth knowing, and — as far as I can tell —
 nobody else was going to check.*
+
+---
+
+**Related** · [Watching a Mountain Burn](https://brooksgroves.com/blog/watching-a-mountain-burn.html)
+— the full write-up · [The Mountain You See Every Day](https://memoir.brooksgroves.com/paragon-peavine.html)
+— riding this mountain in the 1990s · [GC1CG0A](https://www.geocaching.com/geocache/GC1CG0A_basque-sheepherder-the-high-camp)
+— the cache, still listed
