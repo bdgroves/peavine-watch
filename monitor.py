@@ -11,8 +11,17 @@ WHAT IT RECORDS, PER SCENE
   NBR   burn/recovery of canopy+soil moisture   (SWIR2-based, slow to recover)
   NDVI  green-up                                (red-based, moves first)
   NDSI  snow                                    (closes the optical window)
-each at the cache pixel and averaged over a 150 m radius around the grove,
-plus dNBR and RdNBR against a fixed pre-fire baseline.
+each at the cache pixel, averaged over a 150 m radius around the grove, AND
+averaged over an unburned control stand 3 km away, plus dNBR and RdNBR against
+a fixed pre-fire baseline.
+
+WHY A CONTROL
+Vegetation senesces every autumn and greens up every spring regardless of fire.
+Without a reference, an October NDVI decline at the grove cannot be told apart
+from continued fire-driven decline, and next May's green-up cannot be told apart
+from ordinary phenology. The control stand experiences the same season, sun
+angle and atmosphere, so `delta` (grove minus control) isolates what the fire
+did. That difference, not the raw grove curve, is the number to watch.
 
 DESIGN NOTES
   - Idempotent. Scenes already in the file are skipped, so this can run daily
@@ -37,7 +46,7 @@ import numpy as np
 
 from peavine import (search, band, cloud_mask, nbr, ndvi, ndsi, rdnbr, at_site,
                      ring_stats, classify, tile_id, _cloud, OUT,
-                     CACHE_LAT, CACHE_LON, IGNITION)
+                     CACHE_LAT, CACHE_LON, CTRL_LAT, CTRL_LON, IGNITION)
 
 SERIES = os.path.join(OUT, "timeseries.json")
 GROVE_RADIUS_M = 150
@@ -69,20 +78,35 @@ def measure(item):
         "tile": tile_id(item),
         "cloud_pct": round(_cloud(item), 1),
     }
-    site, grove = {}, {}
+    site, grove, control = {}, {}, {}
     valid = 0.0
     for name, fn in (("nbr", nbr), ("ndvi", ndvi), ("ndsi", ndsi)):
         da = fn(item)
         v = at_site(da)
         site[name] = None if not np.isfinite(v) else round(float(v), 4)
+
         st = ring_stats(da, radius_m=GROVE_RADIUS_M)
         if st.get("n"):
             grove[name] = round(st["mean"], 4)
             valid = max(valid, st["valid_frac"])
         else:
             grove[name] = None
+
+        ct = ring_stats(da, lat=CTRL_LAT, lon=CTRL_LON, radius_m=GROVE_RADIUS_M)
+        control[name] = round(ct["mean"], 4) if ct.get("n") else None
+
     row["site"] = site
     row["grove"] = grove
+    row["control"] = control
+
+    # The headline recovery number. Season, sun angle and atmosphere hit both
+    # stands equally, so the difference isolates what the fire did - and, later,
+    # how much of the grove has come back relative to ground that never burned.
+    row["delta"] = {
+        k: (None if grove.get(k) is None or control.get(k) is None
+            else round(grove[k] - control[k], 4))
+        for k in ("nbr", "ndvi", "ndsi")
+    }
     row["valid_frac"] = round(valid, 3)
     row["reliable"] = valid >= MIN_VALID
     return row
@@ -151,6 +175,9 @@ def main():
         flag = "" if row["reliable"] else "  UNRELIABLE"
         print(f"    NBR {row['site']['nbr']}  NDVI {row['site']['ndvi']}  "
               f"NDSI {row['site']['ndsi']}  valid {row['valid_frac']:.0%}{flag}")
+        if row["delta"]["ndvi"] is not None:
+            print(f"    grove NDVI {row['grove']['ndvi']}  vs unburned control "
+                  f"{row['control']['ndvi']}  ->  delta {row['delta']['ndvi']:+.4f}")
         if row.get("dnbr") is not None:
             print(f"    dNBR {row['dnbr']}  ({row['dnbr_class']})  RdNBR {row['rdnbr']}")
         if row.get("note"):

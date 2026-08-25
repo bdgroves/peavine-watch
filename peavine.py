@@ -44,6 +44,23 @@ COLLECTION = "sentinel-2-l2a"
 
 CACHE_LAT, CACHE_LON = 39.58475, -119.94228
 PARK_LAT, PARK_LON = 39.583667, -119.936350
+
+# UNBURNED CONTROL (added 2026-08-25)
+# Deciduous vegetation senesces in autumn and greens up in spring whether or not
+# it burned. Without a reference, a seasonal NDVI decline at the grove is
+# indistinguishable from continued decline, and next spring's green-up is
+# indistinguishable from ordinary phenology. So every pass also samples a patch
+# the fire missed, and the number that matters becomes the DIFFERENCE between
+# them - which cancels season, sun angle and atmospheric variation.
+#
+# Selected from the dNBR/NBR_pre rasters: pre-fire NBR in the grove's density
+# band, dNBR < 0.08 (unburned), 600-4000 m away, and sitting in the densest
+# cluster of such pixels rather than being an isolated lucky one.
+#   150 m ring:  n=700   NBR_pre +0.323   dNBR +0.001   0% of pixels burned
+#   grove ring:  n=697   NBR_pre +0.217   dNBR +0.548   100% burned
+# Caveat: the control ring reads denser than the grove ring on average, so use
+# it for CHANGE over time, not for absolute comparison of the two stands.
+CTRL_LAT, CTRL_LON = 39.57551, -119.97543
 IGNITION = "2026-08-22T18:23:00Z"
 BOX_DEG = 0.035          # ~3.5 km half-width around the site
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")

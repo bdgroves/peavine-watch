@@ -25,6 +25,16 @@
       "ndvi": 0.4465,
       "ndsi": -0.5179
     },
+    "control": {
+      "nbr": 0.3215,
+      "ndvi": 0.5942,
+      "ndsi": -0.5591
+    },
+    "delta": {
+      "nbr": -0.1179,
+      "ndvi": -0.1477,
+      "ndsi": 0.0412
+    },
     "valid_frac": 1.0,
     "reliable": true,
     "note": "pre-fire baseline, pinned - do not recompute"
@@ -42,6 +52,16 @@
         "ndsi": null
       },
       "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
         "nbr": null,
         "ndvi": null,
         "ndsi": null
@@ -69,6 +89,16 @@
         "ndvi": null,
         "ndsi": null
       },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
       "valid_frac": 0.0,
       "reliable": false,
       "dnbr": null,
@@ -88,6 +118,16 @@
         "ndsi": null
       },
       "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
         "nbr": null,
         "ndvi": null,
         "ndsi": null
@@ -115,6 +155,16 @@
         "ndvi": 0.09,
         "ndsi": -0.4051
       },
+      "control": {
+        "nbr": 0.3122,
+        "ndvi": 0.5589,
+        "ndsi": -0.506
+      },
+      "delta": {
+        "nbr": -0.6446,
+        "ndvi": -0.4689,
+        "ndsi": 0.1009
+      },
       "valid_frac": 1.0,
       "reliable": true,
       "dnbr": null,
@@ -138,6 +188,16 @@
         "ndvi": 0.0905,
         "ndsi": -0.4041
       },
+      "control": {
+        "nbr": 0.3212,
+        "ndvi": 0.5481,
+        "ndsi": -0.4861
+      },
+      "delta": {
+        "nbr": -0.6564,
+        "ndvi": -0.4576,
+        "ndsi": 0.082
+      },
       "valid_frac": 1.0,
       "reliable": true,
       "dnbr": 0.5358,
@@ -145,5 +205,5 @@
       "rdnbr": 772.8
     }
   ],
-  "updated_utc": "2026-08-25T17:18:08Z"
+  "updated_utc": "2026-08-25T21:55:16Z"
 }
