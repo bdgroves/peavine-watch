@@ -12,6 +12,7 @@ snow     = "python snow_watch.py"
 baer     = "python baer_check.py"
 scenes   = "python peavine.py"
 watch    = "python monitor.py"
+terrain  = "python terrain.py"
 
 [dependencies]
 python        = ">=3.11"

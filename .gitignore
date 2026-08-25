@@ -16,3 +16,6 @@ __pycache__/
 # os
 Thumbs.db
 .DS_Store
+
+# the time series is the product - keep it tracked
+!out/timeseries.json

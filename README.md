@@ -59,6 +59,102 @@ RdNBR          +772.8   →  in the range most published studies call high sever
 
 **The aspen grove itself burned hotter than the ground around it** — its 100 m mean dNBR exceeds 90% of the surrounding 3 km. Counterintuitively, that's partly *because* it was healthier: dense, moist canopy has more to lose than sparse, dry sagebrush, which is exactly the effect RdNBR exists to correct for.
 
+## Terrain vs fuel: why *this* grove
+
+The cache sits in a drainage. A parking waypoint 500 m away sits on a dry ridge.
+Same fire, same afternoon:
+
+| | flow accumulation | NBR pre-fire | dNBR |
+|---|---|---|---|
+| **Grove / drainage** | 214 cells | +0.481 | **+0.536** |
+| Ridge / parking | 1 cell | +0.128 | +0.126 |
+
+Four times the burn severity, 500 metres apart. Tempting to call that terrain —
+fire runs uphill, a drainage concentrates the front — but it can't be read that
+way as it stands, because **the two points didn't start equal.** The grove was
+dense aspen; the ridge was sparse sagebrush. Denser vegetation burns hotter more
+or less everywhere, because it has more to lose. Part of that 4× is fuel load.
+
+So hold fuel constant. Compare the grove only against ground that was *equally
+vegetated* before the fire (NBR_pre 0.40–0.55):
+
+```
+grove ring, equally vegetated      n=  129    mean dNBR  +0.731
+same density elsewhere in AOI      n= 6,891   mean dNBR  +0.453
+                                   terrain-attributable  +0.278
+```
+
+The grove still burned harder than 79% of equally-fuelled ground. That residual
+can't be fuel load — fuel load is what was controlled for. What's left is terrain
+and moisture regime.
+
+Both effects are real and they compound. Across the whole AOI, severity climbs
+steadily with pre-fire density (+0.344 on the sparsest ground, +0.657 on the
+densest). The grove sat at the intersection: the heaviest fuel on the hillside,
+in the feature that concentrated the fire into it.
+
+Which closes an unpleasant loop. Water collects in that drainage. Water grew the
+aspens. The aspens were the heaviest fuel on the hill, standing in the feature
+that funnelled the fire to them. Every reason the grove existed is a reason it
+burned.
+
+*A note on the word "chimney":* the slope is 13.3°, which is moderate. A textbook
+chimney is a steep narrow gully with a strong convective draft. This is a broad
+SE-facing drainage near a summit — fire running upslope with a drainage
+concentrating the front, not a violent chimney effect. Directionally right, but
+don't overstate it.
+
+![dNBR across the AOI](docs/img/map_dnbr_aoi.png)
+
+*USGS/FIREMON severity ramp over Esri imagery. The grove ring (150 m, dashed
+gold) against the surrounding burn mosaic. Only 20.3% of the AOI reached
+moderate-high or above; the grove mean of +0.548 exceeds 92.1% of the
+surrounding 3 km.*
+
+![The fire's approach](docs/img/map_dnbr_site.png)
+
+*VIIRS thermal detections walking up the drainage, sized by fire radiative power:
+315 m at 12:55 PM, 222 m at 1:40, **79 m at 2:16**, 282 m at 2:36. Brightness
+temperature saturated the sensor (367 K) on most of these — VIIRS could not
+register anything hotter.*
+
+    pixi run terrain
+
+## Watching what happens next
+
+`pixi run watch` records one row per Sentinel-2 pass into `out/timeseries.json` —
+NBR, NDVI and NDSI at the cache pixel and averaged over the grove, plus dNBR and
+RdNBR against a **pinned** pre-fire baseline. It's idempotent, so a daily
+GitHub Actions job can poll a ~5-day satellite revisit without duplicating
+anything, and the baseline never drifts.
+
+Live at **[bdgroves.github.io/peavine-watch](https://bdgroves.github.io/peavine-watch/)**.
+
+### What the recovery curve will and won't tell us
+
+NDVI is the index that moves first when aspen resprouts. But a strong recovery
+curve is **not** evidence the carvings survived — it's closer to the opposite.
+
+Aspen suckering is suppressed by auxin flowing down from the living parent stem.
+Kill the stem and that suppression lifts, which is exactly why aspen regenerates
+so aggressively after fire. Vigorous regrowth is *caused by* the death of the
+overstory. The healthier the recovery looks, the more confident you can be that
+the carved trunks are dead.
+
+Roughly what to expect at the grove:
+
+| NDVI, summer 2027 | reading |
+|---|---|
+| climbs to 0.3–0.5 | vigorous suckering, root system alive, carved stems dead |
+| stays near 0.1–0.15 | roots died too — rarer, and the worse outcome |
+
+Pre-fire grove NDVI was 0.45; it read 0.09 five days after the fire.
+
+**No satellite index can see bark.** NDVI and NBR measure canopy and soil from
+786 km up; the carvings are millimetres deep in cambium. That question needs
+someone standing in the grove.
+
+
 ## The two-sided problem with snow
 
 Peavine sits at 7,574 feet in the Carson Range, and that single fact drives almost everything about what happens next.
