@@ -177,10 +177,36 @@
   senesces every autumn and greens up every spring whether or not it burned. An
   October decline could be fire or it could be October.</p>
   <p>So every pass also samples an <strong>unburned control stand</strong> three
-  kilometres west — similar aspen, similar elevation, dNBR +0.001, zero percent of
-  its pixels burned. Both stands get the same season, the same sun angle and the
-  same atmosphere, so the difference between them isolates what the fire did.
-  <strong>That difference, not the raw curve, is the number to watch.</strong></p>
+  kilometres west-southwest. Both stands get the same season, the same sun angle
+  and the same atmosphere, so the difference between them isolates what the fire
+  did. <strong>That difference, not the raw curve, is the number to watch.</strong></p>
+
+  <div class="card">
+    <h3>The two sample sites</h3>
+    <table>
+      <tr><th></th><th>Burned grove</th><th>Unburned control</th></tr>
+      <tr><td>Latitude</td><td>39.58475 N</td><td>39.57551 N</td></tr>
+      <tr><td>Longitude</td><td>119.94228 W</td><td>119.97543 W</td></tr>
+      <tr><td>Sample radius</td><td>150 m</td><td>150 m</td></tr>
+      <tr><td>Pixels in ring</td><td>697</td><td>700</td></tr>
+      <tr><td>Mean dNBR</td><td>+0.548</td><td><strong>+0.001</strong></td></tr>
+      <tr><td>Pixels burned</td><td>100%</td><td><strong>0%</strong></td></tr>
+    </table>
+  </div>
+
+  <p>The control was chosen from the rasters, not by eye: pre-fire vegetation
+  density in the grove&rsquo;s band, dNBR below 0.08, between 600 m and 4 km away,
+  and sitting in the densest cluster of 1,683 qualifying pixels rather than being
+  one lucky pixel. It reads slightly denser than the grove ring on average, so it
+  is used for <em>change over time</em>, not for absolute comparison of the two
+  stands.</p>
+
+  <figure>
+    <img src="img/map_control.png" alt="Map showing the burned aspen grove and the unburned control stand three kilometres to the west-southwest, over burn severity and satellite imagery.">
+    <figcaption>Both sample sites. The gold star is the burned grove inside the
+    fire; the green triangle is the unburned control, well outside the burn
+    perimeter. Dashed rings are the 150 m sampling radii.</figcaption>
+  </figure>
   <figure>
     <div class="card"><div id="chart-ndvi" class="loading">loading…</div></div>
     <figcaption id="cap-ndvi">Grove and unburned control, mean NDVI over a 150 m
@@ -208,7 +234,9 @@
   </figure>
 
   <h2>Every pass</h2>
-  <p>One row per Sentinel-2 scene. Rows in grey fell below 50% valid pixels after
+  <p>One row per Sentinel-2 scene, burned grove against unburned control. The
+  <strong>Delta</strong> column is the one that matters: grove minus control, with
+  season and atmosphere cancelled out. Rows in grey fell below 50% valid pixels after
   cloud, shadow and cirrus masking — smoke and cloud share the bright-green,
   dark-SWIR signature these indices are built on, so a contaminated scene can fake
   a signal. Those are recorded rather than dropped: a smoky scene is still data
@@ -373,16 +401,22 @@ fetch(DATA,{cache:'no-store'}).then(r=>{
   let rows = obs.slice().reverse().map(o=>`<tr class="${o.reliable?'':'bad'}">
       <td>${o.date}</td><td>${o.tile}</td><td>${fmt(o.cloud_pct,1)}</td>
       <td>${Math.round((o.valid_frac||0)*100)}%</td>
-      <td>${fmt(o.site.nbr)}</td><td>${fmt(o.site.ndvi)}</td><td>${fmt(o.site.ndsi)}</td>
-      <td>${o.dnbr!=null?fmt(o.dnbr,3):'—'}</td>
-      <td>${o.rdnbr!=null?Math.round(o.rdnbr):'—'}</td></tr>`).join('');
+      <td>${fmt(o.grove&&o.grove.ndvi)}</td>
+      <td>${fmt(o.control&&o.control.ndvi)}</td>
+      <td><strong>${fmt(o.delta&&o.delta.ndvi)}</strong></td>
+      <td>${fmt(o.site.nbr)}</td><td>${fmt(o.site.ndsi)}</td>
+      <td>${o.dnbr!=null?fmt(o.dnbr,3):'—'}</td></tr>`).join('');
   if(base) rows += `<tr style="border-top:2px solid var(--mist)"><td><strong>${base.date}</strong></td>
       <td>${base.tile}</td><td>${fmt(base.cloud_pct,1)}</td><td>${Math.round((base.valid_frac||0)*100)}%</td>
-      <td>${fmt(base.site.nbr)}</td><td>${fmt(base.site.ndvi)}</td><td>${fmt(base.site.ndsi)}</td>
-      <td colspan="2" style="text-align:left;color:var(--stone)">pre-fire baseline</td></tr>`;
+      <td>${fmt(base.grove&&base.grove.ndvi)}</td>
+      <td>${fmt(base.control&&base.control.ndvi)}</td>
+      <td>${base.grove&&base.control?fmt(base.grove.ndvi-base.control.ndvi):'—'}</td>
+      <td>${fmt(base.site.nbr)}</td><td>${fmt(base.site.ndsi)}</td>
+      <td style="text-align:left;color:var(--stone)">pre-fire</td></tr>`;
   el('table').outerHTML = `<div id="table"><table>
     <tr><th>Date</th><th>Tile</th><th>Cloud</th><th>Valid</th>
-        <th>NBR</th><th>NDVI</th><th>NDSI</th><th>dNBR</th><th>RdNBR</th></tr>
+        <th>Grove<br>NDVI</th><th>Control<br>NDVI</th><th>Delta</th>
+        <th>NBR</th><th>NDSI</th><th>dNBR</th></tr>
     ${rows}</table></div>`;
 }).catch(e=>{
   const msg = `<p class="loading">Could not load the time series (${e.message}).

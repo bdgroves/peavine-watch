@@ -170,10 +170,42 @@ concentrating the front. Directionally right; don't overstate it.
 ## Watching what happens next
 
 `pixi run watch` records one row per Sentinel-2 pass into `out/timeseries.json` —
-NBR, NDVI and NDSI at the cache pixel and averaged over the grove, plus dNBR and
-RdNBR against a **pinned** pre-fire baseline. Idempotent, so a daily GitHub
-Actions job polls a ~5-day revisit without duplicating anything, and the baseline
-never drifts.
+NBR, NDVI and NDSI at the cache pixel, averaged over the grove, and averaged over
+an **unburned control stand**, plus dNBR and RdNBR against a **pinned** pre-fire
+baseline. Idempotent, so a daily GitHub Actions job polls a ~5-day revisit without
+duplicating anything, and the baseline never drifts.
+
+### The control stand
+
+Vegetation senesces every autumn and greens up every spring whether or not it
+burned. Without a reference, an October decline at the grove cannot be told apart
+from continued fire-driven decline, and next May's green-up cannot be told apart
+from ordinary phenology.
+
+So every pass also samples a patch the fire missed, three kilometres WSW:
+
+| | Burned grove | Unburned control |
+|---|---|---|
+| Coordinates | 39.58475 N, −119.94228 W | 39.57551 N, −119.97543 W |
+| Pixels in 150 m ring | 697 | 700 |
+| Mean dNBR | +0.548 | **+0.001** |
+| Pixels burned | 100% | **0%** |
+| NDVI, 23 Aug 2026 | 0.090 | 0.548 |
+
+Chosen from the rasters rather than by eye: pre-fire density in the grove's band,
+dNBR < 0.08, 600–4000 m away, and in the densest cluster of 1,683 qualifying
+pixels rather than one lucky pixel. It reads slightly denser than the grove ring
+on average, so it is used for *change over time*, not absolute comparison.
+
+![Both sample sites](docs/img/map_control.png)
+
+*Gold star: the burned grove. Green triangle: the unburned control, well outside
+the burn perimeter. Dashed rings are the 150 m sampling radii.*
+
+**The headline number is now the difference.** On 23 August the grove read NDVI
+0.090 against the control's 0.548 — a gap of **−0.458**. Recovery is not "does
+NDVI go up", because spring answers that regardless. Recovery is whether that gap
+closes toward zero.
 
 ### The recovery curve is not the good news it looks like
 
