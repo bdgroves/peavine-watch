@@ -1,0 +1,149 @@
+{
+  "site": {
+    "name": "GC1CG0A - Basque Sheepherder: The High Camp",
+    "lat": 39.58475,
+    "lon": -119.94228,
+    "elevation_m": 2309,
+    "aspect": "SE",
+    "slope_deg": 13.3,
+    "fire": "Hawk Fire",
+    "ignition_utc": "2026-08-22T18:23:00Z"
+  },
+  "baseline": {
+    "scene_id": "S2C_10SGJ_20260818_0_L2A",
+    "date": "2026-08-18",
+    "datetime_utc": "2026-08-18T18:53:34Z",
+    "tile": "10SGJ",
+    "cloud_pct": 0.9,
+    "site": {
+      "nbr": 0.4807,
+      "ndvi": 0.7759,
+      "ndsi": -0.6316
+    },
+    "grove": {
+      "nbr": 0.2036,
+      "ndvi": 0.4465,
+      "ndsi": -0.5179
+    },
+    "valid_frac": 1.0,
+    "reliable": true,
+    "note": "pre-fire baseline, pinned - do not recompute"
+  },
+  "observations": [
+    {
+      "scene_id": "S2B_10TGK_20260823_0_L2A",
+      "date": "2026-08-23",
+      "datetime_utc": "2026-08-23T18:53:19Z",
+      "tile": "10TGK",
+      "cloud_pct": 25.7,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2B_11SKD_20260823_0_L2A",
+      "date": "2026-08-23",
+      "datetime_utc": "2026-08-23T18:53:33Z",
+      "tile": "11SKD",
+      "cloud_pct": 24.2,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2B_10SGJ_20260823_0_L2A",
+      "date": "2026-08-23",
+      "datetime_utc": "2026-08-23T18:53:34Z",
+      "tile": "10SGJ",
+      "cloud_pct": 22.7,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "under 50% valid pixels after SCL masking - indices unreliable"
+    },
+    {
+      "scene_id": "S2A_11SKD_20260823_1_L2A",
+      "date": "2026-08-23",
+      "datetime_utc": "2026-08-23T19:03:47Z",
+      "tile": "11SKD",
+      "cloud_pct": 17.9,
+      "site": {
+        "nbr": 0.0017,
+        "ndvi": 0.324,
+        "ndsi": -0.3947
+      },
+      "grove": {
+        "nbr": -0.3324,
+        "ndvi": 0.09,
+        "ndsi": -0.4051
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2A_10SGJ_20260823_1_L2A",
+      "date": "2026-08-23",
+      "datetime_utc": "2026-08-23T19:03:48Z",
+      "tile": "10SGJ",
+      "cloud_pct": 15.1,
+      "site": {
+        "nbr": -0.0551,
+        "ndvi": 0.2172,
+        "ndsi": -0.3664
+      },
+      "grove": {
+        "nbr": -0.3352,
+        "ndvi": 0.0905,
+        "ndsi": -0.4041
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": 0.5358,
+      "dnbr_class": "Moderate-high severity",
+      "rdnbr": 772.8
+    }
+  ],
+  "updated_utc": "2026-08-25T17:14:34Z"
+}
