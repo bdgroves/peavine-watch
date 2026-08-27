@@ -203,7 +203,73 @@
       "dnbr": 0.5358,
       "dnbr_class": "Moderate-high severity",
       "rdnbr": 772.8
+    },
+    {
+      "scene_id": "S2B_11SKD_20260826_0_L2A",
+      "date": "2026-08-26",
+      "datetime_utc": "2026-08-26T19:03:29Z",
+      "tile": "11SKD",
+      "cloud_pct": 14.0,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": -0.4764,
+        "ndvi": 0.031,
+        "ndsi": -0.4738
+      },
+      "control": {
+        "nbr": 0.3103,
+        "ndvi": 0.584,
+        "ndsi": -0.5344
+      },
+      "delta": {
+        "nbr": -0.7867,
+        "ndvi": -0.553,
+        "ndsi": 0.0606
+      },
+      "valid_frac": 0.266,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2B_10SGJ_20260826_0_L2A",
+      "date": "2026-08-26",
+      "datetime_utc": "2026-08-26T19:03:30Z",
+      "tile": "10SGJ",
+      "cloud_pct": 11.3,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": -0.4532,
+        "ndvi": 0.0274,
+        "ndsi": -0.4378
+      },
+      "control": {
+        "nbr": 0.3239,
+        "ndvi": 0.5766,
+        "ndsi": -0.5186
+      },
+      "delta": {
+        "nbr": -0.7771,
+        "ndvi": -0.5492,
+        "ndsi": 0.0808
+      },
+      "valid_frac": 0.287,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "under 50% valid pixels after SCL masking - indices unreliable"
     }
   ],
-  "updated_utc": "2026-08-26T11:31:37Z"
+  "updated_utc": "2026-08-27T20:58:08Z"
 }
