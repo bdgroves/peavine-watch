@@ -98,13 +98,20 @@ isolates what the fire *did* from what was simply there to begin with.
 (Miller & Thode, 2007) — the direct fix for a grove-versus-sagebrush comparison.
 
 ```
-NBR pre-fire   +0.481   (Aug 18, 4 days before ignition, 0.9% cloud)
-NBR post-fire  -0.055   (Aug 23, fire still burning, 15.1% cloud)
-dNBR           +0.536   ->  Moderate-high severity
-RdNBR          +772.8   ->  in the range most published studies call high
+NBR pre-fire   +0.526   (Aug 18, 4 days before ignition, 0.9% cloud)
+NBR post-fire  -0.035   (Aug 30, after containment, 0.0% cloud)
+dNBR           +0.562   ->  Moderate-high severity
+RdNBR          +774.5   ->  in the range most published studies call high
 ```
 
-*(Provisional — the post-fire scene predates containment. See Limits.)*
+Both scenes are the same MGRS tile (11SKD), twelve days apart, with no
+reprojection between them. The 150 m ring around the cache came back
+**676 of 676 pixels valid** — mean dNBR **+0.655**, median +0.621,
+range +0.337 to +1.069.
+
+*(Superseded an earlier provisional run of +0.536 that used an Aug 23
+post-fire scene taken while the fire was still burning at 0% containment.
+See Limits for what changed and why.)*
 
 At the cache pixel, **NDVI fell from 0.776 to 0.217**. That is closed, healthy
 canopy going to bare soil with scattered debris. This was not a surface fire that
@@ -112,9 +119,9 @@ ran underneath and scorched some trunks. The crown went.
 
 ![Burn severity across the AOI](docs/img/map_dnbr_aoi.png)
 
-*Only 20.3% of this area reached moderate-high severity or above. The grove mean
-of +0.548 exceeds **92.1%** of the surrounding 3 km. It wasn't caught in a
-generally severe fire — it was one of the hottest spots in it.*
+*43.9% of this area reached moderate-high severity or above. The grove mean of
++0.671 exceeds **91.3%** of the surrounding 3 km. It wasn't caught in a generally
+severe fire — it was one of the hottest spots in it.*
 
 ---
 
@@ -124,26 +131,26 @@ Same fire, same afternoon, 500 metres apart:
 
 | | flow accumulation | NBR pre-fire | dNBR |
 |---|---|---|---|
-| **Grove / drainage** | 214 cells | +0.481 | **+0.536** |
-| Ridge / parking | 1 cell | +0.128 | +0.126 |
+| **Grove / drainage** | 214 cells | +0.526 | **+0.562** |
+| Ridge / parking | 1 cell | +0.097 | +0.118 |
 
-Four times the severity. Tempting to call that terrain — fire runs uphill, a
+Nearly five times the severity. Tempting to call that terrain — fire runs uphill, a
 drainage concentrates the front — but **it cannot be read that way as it stands**,
 because the two points did not start equal. The grove was dense aspen; the ridge
 was sparse sagebrush. Denser vegetation burns hotter more or less everywhere,
-because it has more to lose. Part of that 4× is fuel load, not terrain.
+because it has more to lose. Part of that gap is fuel load, not terrain.
 
 So hold fuel constant. Compare the grove only against ground that was *equally
 vegetated* before the fire:
 
 ```
 Ground with pre-fire NBR 0.40-0.55:
-  grove ring          n=  129    mean dNBR  +0.731
-  elsewhere in AOI    n= 6,891   mean dNBR  +0.453
-                      terrain-attributable  +0.278
+  grove ring          n=  147    mean dNBR  +0.876
+  elsewhere in AOI    n= 7,286   mean dNBR  +0.471
+                      terrain-attributable  +0.405
 ```
 
-The grove still burned harder than **79% of equally-fuelled ground**. That
+The grove still burned harder than **72.3% of equally-fuelled ground**. That
 residual cannot be fuel load — fuel load is what was controlled for. What is left
 is terrain and moisture regime.
 
@@ -188,9 +195,10 @@ So every pass also samples a patch the fire missed, three kilometres WSW:
 |---|---|---|
 | Coordinates | 39.58475 N, −119.94228 W | 39.57551 N, −119.97543 W |
 | Pixels in 150 m ring | 697 | 700 |
-| Mean dNBR | +0.548 | **+0.001** |
+| Mean dNBR | +0.671 | **+0.001** |
 | Pixels burned | 100% | **0%** |
 | NDVI, 23 Aug 2026 | 0.090 | 0.548 |
+| NDVI, 31 Aug 2026 | 0.150 | 0.584 |
 
 Chosen from the rasters rather than by eye: pre-fire density in the grove's band,
 dNBR < 0.08, 600–4000 m away, and in the densest cluster of 1,683 qualifying
@@ -206,6 +214,16 @@ the burn perimeter. Dashed rings are the 150 m sampling radii.*
 0.090 against the control's 0.548 — a gap of **−0.458**. Recovery is not "does
 NDVI go up", because spring answers that regardless. Recovery is whether that gap
 closes toward zero.
+
+By 31 August the grove read 0.150 and the gap had narrowed to **−0.434**. Both
+tiles agree independently on both dates, so it is not noise. It is also almost
+certainly **not regrowth** — nothing vegetative happens on burned aspen in the
+first week of September. The likelier reading is that the 23 August scene was
+taken through smoke and fresh ash, which suppresses NDVI beyond the actual
+damage, and that the number is now settling toward the true post-fire floor.
+
+Which is the same reason the severity figure moved. Watch the gap, not the
+grove.
 
 ### The recovery curve is not the good news it looks like
 
@@ -285,10 +303,15 @@ contract.
 
 ## Limits, stated plainly
 
-- **The headline number is provisional.** The only post-fire scene available so
-  far was taken while Hawk was still burning at 0% containment. Active flame and
-  smoke both distort NBR upward. Re-run `pixi run severity` once a clear
-  post-containment scene exists.
+- **The number moved once, and may move again.** The first run gave dNBR +0.536
+  from an Aug 23 post-fire scene taken while Hawk was still burning at 0%
+  containment, through 15.1% cloud. Re-run on 2 September against a clean Aug 30
+  scene (0.0% cloud, same tile), it came out **+0.562**. Note what actually
+  changed: the *post*-fire value barely moved (−0.055 to −0.035), while the
+  *pre*-fire value jumped from +0.481 to +0.526 on what should be the same Aug 18
+  scene. A pre-fire number has no business changing — the most likely explanation
+  is the tile issue below, which means the earlier figure carried registration
+  error and the current one does not. Worth confirming rather than assuming.
 - **dNBR and RdNBR are not soil burn severity.** They measure surface and canopy
   change from above. Soil burn severity — the number that actually drives
   debris-flow risk — needs a BAER field team on the ground. A site can read high
