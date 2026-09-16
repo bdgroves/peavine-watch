@@ -825,7 +825,72 @@
       "dnbr": 0.7327,
       "dnbr_class": "High severity",
       "rdnbr": 1056.8
+    },
+    {
+      "scene_id": "S2B_11SKD_20260915_0_L2A",
+      "date": "2026-09-15",
+      "datetime_utc": "2026-09-15T19:03:30Z",
+      "tile": "11SKD",
+      "cloud_pct": 7.7,
+      "site": {
+        "nbr": -0.0951,
+        "ndvi": 0.2862,
+        "ndsi": -0.527
+      },
+      "grove": {
+        "nbr": -0.4243,
+        "ndvi": 0.1523,
+        "ndsi": -0.5814
+      },
+      "control": {
+        "nbr": 0.3398,
+        "ndvi": 0.6219,
+        "ndsi": -0.5598
+      },
+      "delta": {
+        "nbr": -0.7641,
+        "ndvi": -0.4696,
+        "ndsi": -0.0216
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2B_10SGJ_20260915_0_L2A",
+      "date": "2026-09-15",
+      "datetime_utc": "2026-09-15T19:03:31Z",
+      "tile": "10SGJ",
+      "cloud_pct": 6.3,
+      "site": {
+        "nbr": -0.2242,
+        "ndvi": 0.2641,
+        "ndsi": -0.5653
+      },
+      "grove": {
+        "nbr": -0.4249,
+        "ndvi": 0.15,
+        "ndsi": -0.5761
+      },
+      "control": {
+        "nbr": 0.352,
+        "ndvi": 0.607,
+        "ndsi": -0.5335
+      },
+      "delta": {
+        "nbr": -0.7769,
+        "ndvi": -0.457,
+        "ndsi": -0.0426
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": 0.7049,
+      "dnbr_class": "High severity",
+      "rdnbr": 1016.7
     }
   ],
-  "updated_utc": "2026-09-15T15:28:19Z"
+  "updated_utc": "2026-09-16T15:23:09Z"
 }
