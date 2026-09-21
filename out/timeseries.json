@@ -1086,7 +1086,72 @@
       "dnbr": 0.6921,
       "dnbr_class": "High severity",
       "rdnbr": 998.2
+    },
+    {
+      "scene_id": "S2C_11SKD_20260920_0_L2A",
+      "date": "2026-09-20",
+      "datetime_utc": "2026-09-20T19:03:32Z",
+      "tile": "11SKD",
+      "cloud_pct": 47.9,
+      "site": {
+        "nbr": -0.0092,
+        "ndvi": 0.096,
+        "ndsi": -0.158
+      },
+      "grove": {
+        "nbr": -0.079,
+        "ndvi": 0.0746,
+        "ndsi": -0.1691
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.917,
+      "reliable": true,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2C_10SGJ_20260920_0_L2A",
+      "date": "2026-09-20",
+      "datetime_utc": "2026-09-20T19:03:33Z",
+      "tile": "10SGJ",
+      "cloud_pct": 48.3,
+      "site": {
+        "nbr": -0.0028,
+        "ndvi": 0.0905,
+        "ndsi": -0.1281
+      },
+      "grove": {
+        "nbr": -0.0816,
+        "ndvi": 0.0684,
+        "ndsi": -0.1667
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.929,
+      "reliable": true,
+      "dnbr": 0.4835,
+      "dnbr_class": "Moderate-high severity",
+      "rdnbr": 697.4
     }
   ],
-  "updated_utc": "2026-09-20T14:37:36Z"
+  "updated_utc": "2026-09-21T16:51:47Z"
 }
