@@ -1705,7 +1705,105 @@
       "dnbr": 0.6769,
       "dnbr_class": "High severity",
       "rdnbr": 976.3
+    },
+    {
+      "scene_id": "S2A_10TGK_20261009_0_L2A",
+      "date": "2026-10-09",
+      "datetime_utc": "2026-10-09T18:53:35Z",
+      "tile": "10TGK",
+      "cloud_pct": 23.9,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2A_11SKD_20261009_0_L2A",
+      "date": "2026-10-09",
+      "datetime_utc": "2026-10-09T18:53:49Z",
+      "tile": "11SKD",
+      "cloud_pct": 22.8,
+      "site": {
+        "nbr": 0.0012,
+        "ndvi": 0.2475,
+        "ndsi": -0.4093
+      },
+      "grove": {
+        "nbr": -0.3092,
+        "ndvi": 0.1163,
+        "ndsi": -0.4495
+      },
+      "control": {
+        "nbr": -0.415,
+        "ndvi": 0.0936,
+        "ndsi": -0.4642
+      },
+      "delta": {
+        "nbr": 0.1058,
+        "ndvi": 0.0227,
+        "ndsi": 0.0147
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2A_10SGJ_20261009_0_L2A",
+      "date": "2026-10-09",
+      "datetime_utc": "2026-10-09T18:53:49Z",
+      "tile": "10SGJ",
+      "cloud_pct": 19.9,
+      "site": {
+        "nbr": -0.1333,
+        "ndvi": 0.2,
+        "ndsi": -0.4091
+      },
+      "grove": {
+        "nbr": -0.3109,
+        "ndvi": 0.1164,
+        "ndsi": -0.4466
+      },
+      "control": {
+        "nbr": -0.4113,
+        "ndvi": 0.0604,
+        "ndsi": -0.4299
+      },
+      "delta": {
+        "nbr": 0.1004,
+        "ndvi": 0.056,
+        "ndsi": -0.0167
+      },
+      "valid_frac": 1.0,
+      "reliable": true,
+      "dnbr": 0.614,
+      "dnbr_class": "Moderate-high severity",
+      "rdnbr": 885.6
     }
   ],
-  "updated_utc": "2026-10-09T17:22:12Z"
+  "updated_utc": "2026-10-10T16:10:05Z"
 }
