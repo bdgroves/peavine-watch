@@ -2457,7 +2457,106 @@
       "dnbr": -0.0148,
       "dnbr_class": "Unburned",
       "rdnbr": -21.3
+    },
+    {
+      "scene_id": "S2C_10TGK_20261106_0_L2A",
+      "date": "2026-11-06",
+      "datetime_utc": "2026-11-06T18:53:18Z",
+      "tile": "10TGK",
+      "cloud_pct": 33.9,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2C_11SKD_20261106_0_L2A",
+      "date": "2026-11-06",
+      "datetime_utc": "2026-11-06T18:53:32Z",
+      "tile": "11SKD",
+      "cloud_pct": 56.2,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": 0.0535,
+        "ndvi": 0.0492,
+        "ndsi": 0.011
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
+    },
+    {
+      "scene_id": "S2C_10SGJ_20261106_0_L2A",
+      "date": "2026-11-06",
+      "datetime_utc": "2026-11-06T18:53:32Z",
+      "tile": "10SGJ",
+      "cloud_pct": 58.3,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": 0.0785,
+        "ndvi": 0.0439,
+        "ndsi": 0.0318
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "under 50% valid pixels after SCL masking - indices unreliable"
     }
   ],
-  "updated_utc": "2026-11-06T17:49:52Z"
+  "updated_utc": "2026-11-07T16:48:04Z"
 }
