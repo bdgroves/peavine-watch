@@ -2850,7 +2850,40 @@
       "dnbr": -0.2794,
       "dnbr_class": "Enhanced regrowth, high",
       "rdnbr": -403.0
+    },
+    {
+      "scene_id": "S2B_11SKD_20261121_0_L2A",
+      "date": "2026-11-21",
+      "datetime_utc": "2026-11-21T18:53:38Z",
+      "tile": "11SKD",
+      "cloud_pct": 56.7,
+      "site": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "grove": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "control": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "delta": {
+        "nbr": null,
+        "ndvi": null,
+        "ndsi": null
+      },
+      "valid_frac": 0.0,
+      "reliable": false,
+      "dnbr": null,
+      "dnbr_class": null,
+      "rdnbr": null,
+      "note": "different MGRS tile from baseline (10SGJ) - not differenced"
     }
   ],
-  "updated_utc": "2026-11-21T17:54:18Z"
+  "updated_utc": "2026-11-22T18:17:55Z"
 }
